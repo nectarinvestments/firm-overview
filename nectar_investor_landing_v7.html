@@ -1,0 +1,297 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',sans-serif;background:#F8F8F3;color:#01041D}
+:root{
+  --navy:#01041D;--ultra:#971BFF;--violet:#8462F3;--crisp:#5DE7DC;
+  --cream:#F8F8F3;--ultra-tint:#E8D1FD;--violet-tint:#C4B2FF;
+  --gray:#727272;--gray-t1:#E7EAEC;--gray-t2:#D9D9D9;
+}
+.page{max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:2rem;border-bottom:1px solid var(--gray-t2);margin-bottom:3rem}
+.nectar-logo{height:30px;width:auto}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:13px;font-weight:500;color:var(--gray);text-decoration:none;cursor:pointer;letter-spacing:.2px}
+.nav-links a:hover{color:var(--navy)}
+.hero{margin-bottom:4rem}
+.overline{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--ultra);margin-bottom:1rem}
+.hero-title{font-size:clamp(34px,4.5vw,52px);font-weight:500;color:var(--navy);line-height:1.1;letter-spacing:-1px;margin-bottom:1.25rem;max-width:640px}
+.hero p{font-size:17px;font-weight:400;color:var(--gray);line-height:1.75;max-width:560px;margin-bottom:1.75rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.75rem}
+.meta-chip{font-size:12px;font-weight:500;color:var(--navy);padding:6px 14px;border:1px solid var(--gray-t2);border-radius:80px;background:white;letter-spacing:.1px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--ultra);margin-bottom:.75rem}
+.section-heading{font-size:24px;font-weight:600;color:var(--navy);margin-bottom:.5rem}
+.section-body{font-size:15px;color:var(--gray);line-height:1.75}
+.section{margin-bottom:4rem}
+.divider{height:1px;background:var(--gray-t2);margin:3.5rem 0}
+
+/* STATS — all white */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-t2);border:1px solid var(--gray-t2);border-radius:16px;overflow:hidden;margin-bottom:4rem}
+.stat-card{background:var(--navy);padding:2rem 1.5rem;display:flex;flex-direction:column;gap:.5rem}
+.stat-num{font-size:58px;font-weight:800;color:white;letter-spacing:-2px;line-height:1}
+.stat-label{font-size:13px;font-weight:500;color:var(--violet-tint);line-height:1.5;margin-top:.25rem}
+
+.invest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 2rem;margin-top:1.25rem;border:1px solid var(--gray-t2);border-radius:12px;overflow:hidden;background:white}
+.invest-col{padding:.25rem 1.25rem}
+.invest-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--gray-t1)}
+.invest-row:last-child{border-bottom:none}
+.invest-key{font-size:13px;color:var(--gray)}
+.invest-val{font-size:13px;font-weight:600;color:var(--navy)}
+.chart-wrap{background:white;border:1px solid var(--gray-t2);border-radius:16px;padding:1.5rem;margin-top:1.25rem}
+.chart-head{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.chart-sub{font-size:12px;color:var(--gray);margin-bottom:1rem}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.leg-toggle{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--navy);padding:5px 12px;border-radius:80px;border:1.5px solid transparent;cursor:pointer;transition:all .18s ease;user-select:none;background:white}
+.leg-toggle.active{border-color:currentColor}
+.leg-toggle.inactive{opacity:.38;filter:grayscale(.4)}
+.leg-toggle:hover{opacity:1;filter:none}
+.leg-sq{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.leg-dash{width:20px;border-top:2px dashed var(--violet);flex-shrink:0}
+.leg-teal-line{width:20px;border-top:2.5px solid #1D9E75;flex-shrink:0}
+.pillars{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
+.pillar{display:flex;gap:1rem;padding:1.125rem 1.25rem;background:white;border:1px solid var(--gray-t2);border-radius:12px}
+.pillar-icon{flex-shrink:0;width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.pillar-icon.purple{background:var(--ultra-tint)}
+.pillar-icon.teal{background:#E1F5EE}
+.pillar-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.pillar-body{font-size:13px;color:var(--gray);line-height:1.6}
+.use-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:1.25rem}
+.use-card{background:white;border:1px solid var(--gray-t2);border-radius:12px;padding:1.125rem 1.25rem}
+.use-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.use-dot{width:8px;height:8px;border-radius:50%;background:var(--ultra);flex-shrink:0}
+.use-card p{font-size:13px;color:var(--gray);line-height:1.55}
+.quotes{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem}
+.quote-card{border-left:3px solid var(--violet);padding:.875rem 1rem .875rem 1.25rem;background:white;border-radius:0 10px 10px 0}
+.quote-card p{font-size:14px;color:var(--navy);line-height:1.65;font-style:italic;margin-bottom:6px}
+.quote-attr{font-size:12px;color:var(--gray)}
+.returns-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:1.5rem}
+.ret-box{text-align:center;border:1px solid var(--gray-t2);background:white;border-radius:12px;padding:1.25rem 1rem}
+.ret-box.featured{background:var(--navy);border-color:var(--navy)}
+.ret-num{font-size:26px;font-weight:700;color:var(--ultra);margin-bottom:5px;letter-spacing:-1px}
+.ret-box.featured .ret-num{color:var(--crisp)}
+.ret-lbl{font-size:12px;color:var(--gray);line-height:1.4}
+.ret-box.featured .ret-lbl{color:var(--violet-tint)}
+.team-intro{font-size:15px;color:var(--gray);line-height:1.75;margin-bottom:1.5rem}
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.flip-wrap{height:210px;perspective:1000px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.flip-wrap.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:1.25rem}
+.flip-front{background:white;border:1px solid var(--gray-t2);display:flex;flex-direction:column;justify-content:space-between}
+.flip-back{background:var(--navy);border:1px solid var(--navy);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.flip-hint{font-size:11px;color:var(--gray-t2);letter-spacing:.5px;display:flex;align-items:center;gap:4px}
+.flip-hint-back{font-size:11px;color:var(--violet-tint);letter-spacing:.5px}
+.team-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.team-title{font-size:12px;color:var(--ultra);font-weight:600;margin-bottom:.875rem}
+.team-creds{display:flex;flex-wrap:wrap;gap:6px}
+.cred-tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;white-space:nowrap}
+.cred-tag.navy{background:var(--navy);color:var(--violet-tint)}
+.cred-tag.ultra{background:var(--ultra-tint);color:#3a18a0}
+.cred-tag.gray{background:var(--gray-t1);color:var(--navy)}
+.back-name{font-size:14px;font-weight:700;color:white;margin-bottom:2px}
+.back-title{font-size:11px;color:var(--violet-tint);font-weight:600;margin-bottom:.75rem}
+.back-bio{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;flex:1;overflow:hidden}
+.cta-block{background:var(--navy);border-radius:16px;padding:2.5rem;text-align:center;margin-top:1.5rem}
+.cta-block h3{font-size:22px;font-weight:600;color:white;margin-bottom:.5rem}
+.cta-block p{font-size:14px;color:var(--violet-tint);margin-bottom:1.5rem}
+.btn-primary{display:inline-block;background:var(--ultra);color:white;border:none;border-radius:80px;padding:11px 26px;font-size:14px;font-weight:700;cursor:pointer;margin:0 6px;letter-spacing:.1px;font-family:'Manrope',sans-serif}
+.btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,.3);border-radius:80px;padding:11px 26px;font-size:14px;font-weight:700;cursor:pointer;margin:0 6px;font-family:'Manrope',sans-serif}
+.btn-primary:hover{opacity:.9}
+.btn-outline:hover{border-color:white}
+.legal{margin-top:2rem;font-size:11px;color:var(--gray);line-height:1.7}
+</style>
+
+<div class="page">
+
+  <nav class="nav">
+    <svg class="nectar-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 548.37 192.34"><defs><linearGradient id="nlg3" x1="121.6" y1="4.01" x2="14.26" y2="142.51" gradientUnits="userSpaceOnUse"><stop offset="0.34" stop-color="#5be9d9"/><stop offset="0.54" stop-color="#7e75ee"/><stop offset="0.69" stop-color="#981efe"/><stop offset="1" stop-color="#3302f7"/></linearGradient></defs><g><path fill="#01041D" d="M210.45,125.83v39.59a4.59,4.59,0,0,1-9.18,0V125.83c0-13.67-9.18-23.79-21.86-23.79-13.11,0-23.31,10.54-23.31,23.79v39.59a4.59,4.59,0,0,1-9.18,0V97.49a4.59,4.59,0,0,1,9.18,0v5.12a32.58,32.58,0,0,1,23.31-9.54,29.9,29.9,0,0,1,22.73,9.83C207.54,108.88,210.45,117,210.45,125.83Z"/><path fill="#01041D" d="M258.54,170c-21.28,0-37.16-16.52-37.16-38.45a40.07,40.07,0,0,1,9.91-27.06,35.24,35.24,0,0,1,26.52-11.39c20.84,0,35.85,16.09,35.85,38.45a4.65,4.65,0,0,1-4.67,4.56H230.85c2,14.38,13.26,24.78,27.69,24.78,9.76,0,18.36-4.56,23.31-12.82a4.78,4.78,0,0,1,6.41-1.42,4.54,4.54,0,0,1,1.61,6.26A36.29,36.29,0,0,1,258.54,170Zm-27.69-43H284c-1.75-14.81-12-24.93-26.23-24.93S232.74,112.3,230.85,127Z"/><path fill="#01041D" d="M341.74,170c-21.13,0-37.16-16.52-37.16-38.45s16-38.45,37.16-38.45c12.24,0,23.17,5.41,30,15.1a4.5,4.5,0,0,1-1.17,6.41,4.73,4.73,0,0,1-6.41-1.14A26.9,26.9,0,0,0,341.74,102c-15.88,0-28,12.68-28,29.48s12.1,29.34,28,29.34a26.79,26.79,0,0,0,22.44-11.25,4.59,4.59,0,0,1,6.41-1.14,4.36,4.36,0,0,1,1.17,6.27A36.19,36.19,0,0,1,341.74,170Z"/><path fill="#01041D" d="M419.85,157.16a4.45,4.45,0,0,1,.58,6.41,19,19,0,0,1-14.28,6.4c-10.49,0-18.94-8.26-18.94-18.37V102H383a4.49,4.49,0,1,1,0-9h4.23V78.55A4.64,4.64,0,0,1,391.87,74a4.55,4.55,0,0,1,4.66,4.56V93.07H413a4.49,4.49,0,1,1,0,9H396.53V151.6a9.48,9.48,0,0,0,9.62,9.26,9.13,9.13,0,0,0,7.14-3.28A4.71,4.71,0,0,1,419.85,157.16Z"/><path fill="#01041D" d="M498.83,97.49v67.93a4.67,4.67,0,0,1-9.33,0v-8a36.28,36.28,0,0,1-28,12.53c-21.13,0-37.16-16.52-37.16-38.45s16-38.45,37.16-38.45a36.63,36.63,0,0,1,28,12.39v-8a4.67,4.67,0,0,1,9.33,0Zm-9.33,34c0-16.8-11.95-29.48-28-29.48-15.88,0-27.83,12.68-27.83,29.48s11.95,29.34,27.83,29.34C477.55,160.86,489.5,148.18,489.5,131.52Z"/><path fill="#01041D" d="M548.37,97.49a4.55,4.55,0,0,1-4.66,4.55c-12.83,0-22.59,10.26-22.59,23.79v39.59a4.59,4.59,0,0,1-9.18,0V97.49a4.59,4.59,0,0,1,9.18,0v4.7a31.43,31.43,0,0,1,22.59-9.12A4.53,4.53,0,0,1,548.37,97.49Z"/><path fill="url(#nlg3)" d="M173.72,65.38c-.9-.47-19.4-10.13-35.51-10.44-1.92-2.77-8.69-11-20.82-10.49-6.2.27-14,9.19-18.26,14.77C84.36,23.61,52.34,1.46,50.92.49A2.87,2.87,0,0,0,48.44.14,2.85,2.85,0,0,0,46.65,1.9c-.3.86-4.6,14,2.34,39.62A171.7,171.7,0,0,0,3.42,25a2.83,2.83,0,0,0-3.37,3.3C.37,30,8.68,70.74,75.18,109.35a152.5,152.5,0,0,0,.31,80.92,2.83,2.83,0,0,0,2.73,2.07,2.35,2.35,0,0,0,.52-.05,2.82,2.82,0,0,0,2.3-3c-.05-.5-4.53-50.19,18.86-68.63s23.88-25.19,24.8-36.47c.11-1.23.21-2.52.36-3.91l0-.41c.61-6.17,2.37-15.74,7.33-18.79,15.21-2.86,38.41,9.24,38.64,9.36a2.78,2.78,0,0,0,1.32.33,2.83,2.83,0,0,0,1.33-5.34ZM51.22,7.78c9,7,33.12,27.82,44,56.92q-2.4,3.57-4.69,7.5A177.46,177.46,0,0,0,56.17,45.57C50.16,26.36,50.46,13.74,51.22,7.78ZM79.76,95A234,234,0,0,1,59.2,54.32,178,178,0,0,1,87.59,77.48,151.91,151.91,0,0,0,79.76,95ZM6.94,31.56A165.11,165.11,0,0,1,51.39,49.49c4.72,14.24,12.73,31.69,26,52.38-.2.62-.4,1.23-.59,1.86C26.18,74,11,42.79,6.94,31.56Zm112.52,47.7,0,.38c-.15,1.43-.26,2.77-.37,4-.85,10.4-1.28,15.62-22.66,32.48C85.45,124.78,78.6,139.86,76,161l0,.23a147,147,0,0,1,3.57-45.7,151.73,151.73,0,0,1,12.2-33.64,106.79,106.79,0,0,1,8.57,10.33A2.83,2.83,0,0,0,105,89,114.85,114.85,0,0,0,94.64,76.46a120.52,120.52,0,0,1,7.46-11.74c7.59-10.48,13.56-14.52,15.53-14.6.29,0,.57,0,.85,0a17.93,17.93,0,0,1,12.61,5.19C126,57.38,121,63.67,119.46,79.26Z"/></g></svg>
+    <div class="nav-links">
+      <a onclick="document.getElementById('s-overview').scrollIntoView({behavior:'smooth'})">Overview</a>
+      <a onclick="document.getElementById('s-market').scrollIntoView({behavior:'smooth'})">Market</a>
+      <a onclick="document.getElementById('s-opportunity').scrollIntoView({behavior:'smooth'})">Opportunity</a>
+      <a onclick="document.getElementById('s-team').scrollIntoView({behavior:'smooth'})">Team</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="overline">Real Estate Private Credit</div>
+    <h1 class="hero-title">Structured Credit for <span style="color:#971BFF">Small & Mid Size</span> Apartment Owners</h1>
+    <p>Nectar provides flexible capital to owners of small and mid-size apartment buildings across the U.S. Through Nectar's AI-powered platform, investors gain access to historically underserved parts of the market.</p>
+    <div class="hero-meta">
+      <div class="meta-chip">Strategy: Real Estate Private Credit</div>
+      <div class="meta-chip">Headquarters: Atlanta, GA</div>
+      <div class="meta-chip">Positions in 30 States</div>
+      <div class="meta-chip">Target raise: $75M</div>
+      <div class="meta-chip">Asset type: 10–200 unit multifamily</div>
+    </div>
+  </div>
+
+  <!-- TRACK RECORD -->
+  <div id="s-overview"><div class="section-label">Track Record</div></div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">$52M</div>
+      <div class="stat-label">Deployed across 144 investments since inception</div>
+    </div>
+    <div class="stat-card" style="border-left:1px solid #1a1a3a;border-right:1px solid #1a1a3a">
+      <div class="stat-num">18%</div>
+      <div class="stat-label">Realized IRR on 54 full-cycle deals</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">States deployed across the U.S.</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:-2rem;margin-bottom:4rem">
+    <a class="btn-primary" href="track-record.html" target="_blank" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px">View full track record <span style="font-size:16px">↗</span></a>
+  </div>
+
+  <!-- TARGET INVESTMENTS -->
+  <div class="section">
+    <div class="section-label">Target Investments</div>
+    <div class="section-heading">What we fund</div>
+    <div class="invest-grid">
+      <div class="invest-col">
+        <div class="invest-row"><span class="invest-key">Asset type</span><span class="invest-val">Multifamily</span></div>
+        <div class="invest-row"><span class="invest-key">Units per property</span><span class="invest-val">10–200</span></div>
+        <div class="invest-row"><span class="invest-key">Asset value</span><span class="invest-val">$5M–$50M</span></div>
+        <div class="invest-row"><span class="invest-key">Structures</span><span class="invest-val" style="text-align:right;max-width:200px">Preferred Equity, Cash Flow Assignment, Sponsor-Level Credit</span></div>
+      </div>
+      <div class="invest-col">
+        <div class="invest-row"><span class="invest-key">Investment size</span><span class="invest-val">$300K–$5M</span></div>
+        <div class="invest-row"><span class="invest-key">Target IRR</span><span class="invest-val">12–16%</span></div>
+        <div class="invest-row"><span class="invest-key">Geography</span><span class="invest-val">United States</span></div>
+        <div class="invest-row"><span class="invest-key">Sponsors</span><span class="invest-val">Experienced Only</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MARKET -->
+  <div id="s-market" class="section">
+    <div class="section-label">The Setting</div>
+    <div class="section-heading">What's happening in the market</div>
+    <p class="section-body" style="margin-bottom:1.25rem">Multifamily values are down 23% from the July 2022 high and 12.7% below their pre-pandemic trend. We are past peak supply. Asset values are expected to rebound. <span style="font-size:12px;color:var(--gray)">— CoStar CCRSI</span></p>
+    <div class="chart-wrap">
+      <div class="chart-head">Multifamily supply cycle &amp; asset values</div>
+      <div class="chart-sub">Annual units (thousands, left axis) · Asset value index: 2019 = 100 (right axis)</div>
+      <div class="legend" id="chartLegend">
+        <button class="leg-toggle active" data-idx="0" style="color:#B03A2E"><span class="leg-sq" style="background:#B03A2E"></span>Annual deliveries</button>
+        <button class="leg-toggle active" data-idx="1" style="color:#8462F3"><span class="leg-dash"></span>New construction starts</button>
+        <button class="leg-toggle active" data-idx="2" style="color:#1D9E75"><span class="leg-teal-line"></span>Asset value index</button>
+      </div>
+      <div style="position:relative;width:100%;height:240px"><canvas id="supplyChart"></canvas></div>
+      <div style="font-size:11px;color:var(--gray);margin-top:.75rem;line-height:1.6">Sources: CoStar CCRSI; CBRE Research; NCREIF NPI; Fannie Mae ESR Group; MMCG 2025–2030 Outlook. 2025–2027 figures are estimates.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- OPPORTUNITY -->
+  <div id="s-opportunity" class="section">
+    <div class="section-label">The Opportunity</div>
+    <div class="section-heading">How we deploy in this environment</div>
+    <p class="section-body" style="margin-bottom:1.5rem">Three structural advantages let Nectar access deals that no other provider can efficiently fund.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div><div class="pillar-title">AI-native platform</div><div class="pillar-body">AI agents run every part of the investment process — origination, underwriting, monitoring. This lets us fund deals that are too small for institutions (sub-$5M) and too complex for banks (pref / mezz / equity structures).</div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><div class="pillar-title">Existing network</div><div class="pillar-body">We have multi-year partnerships with sponsors who weathered the downturn. Now we partner with them to take advantage of the market correction. They provide boots on the ground, we provide the capital.</div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div><div class="pillar-title">Outsized returns</div><div class="pillar-body">Institutions finance larger deals, earning 10–12%. We earn a 2–6% premium by tackling smaller, more complex opportunities that they cannot efficiently originate or manage.</div></div>
+      </div>
+    </div>
+    <div class="section-label" style="margin-bottom:.75rem">Use cases</div>
+    <div class="use-grid">
+      <div class="use-card"><h4><span class="use-dot"></span>Acquisition equity gap</h4><p>Sponsors acquiring distressed assets at 20–40% below 2022 pricing need equity to close. We fill the gap between the senior loan and their contribution.</p></div>
+      <div class="use-card"><h4><span class="use-dot"></span>Debt buydown / bridge to refi</h4><p>Bridge debt from 2021–22 is maturing above current appraised values. Lenders require partial paydowns. We provide the capital.</p></div>
+      <div class="use-card"><h4><span class="use-dot"></span>Sponsor platform equity</h4><p>Proven operators scaling acquisition programs now that pricing has reset. We provide sponsor-level capital across a pipeline of deals.</p></div>
+      <div class="use-card"><h4><span class="use-dot"></span>CapEx Financing</h4><p>Senior lenders now require a capital injection before extending. We find opportunities with strong fundamentals and provide capital to improve the property and increase occupancy.</p></div>
+    </div>
+    <div class="quotes">
+      <div class="quote-card"><p>"The extend and pretend without a capital injection are gone. The interesting opportunities are where lenders have lost faith the borrower is going to bring capital."</p><div class="quote-attr">Active multifamily operator · 14-asset portfolio</div></div>
+      <div class="quote-card"><p>"I toured five REO properties just last week. I still see the disconnect between buyers and sellers, but I believe soon that disconnect will go away and deals will start happening."</p><div class="quote-attr">Texas-based operator · 50+ acquisitions completed</div></div>
+      <div class="quote-card"><p>"I see a lot of people that will have to sell... People cannot refi and if they do refi they have to come up with more money."</p><div class="quote-attr">Phoenix-area operator · apartment and commercial portfolio</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TEAM -->
+  <div id="s-team" class="section">
+    <div class="section-label">Team</div>
+    <div class="section-heading" style="margin-bottom:.5rem">Who we are</div>
+    <p class="team-intro">Click any card to read the full bio.</p>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to learn more?</h3>
+    <a class="btn-primary" href="https://www.usenectar.com/invest#join-the-network-form" target="_blank">Request details ↗</a>
+  </div>
+  <div class="legal">This page is for informational purposes only and does not constitute an offer to sell or solicitation to buy any security. For accredited investors only. Past performance is not indicative of future results. © 2026 RE Nectar Inc.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const supplyChart = new Chart(document.getElementById('supplyChart'),{
+  data:{labels:['2018','2019','2020','2021','2022','2023','2024','2025E','2026E','2027E'],datasets:[
+    {type:'line',label:'Annual deliveries',data:[280,300,275,345,430,530,619,490,375,230],yAxisID:'y1',borderColor:'#B03A2E',backgroundColor:'rgba(176,58,46,0.07)',fill:true,tension:.35,pointStyle:'rect',pointRadius:5,pointBackgroundColor:'#F8F8F3',pointBorderColor:'#B03A2E',pointBorderWidth:2,borderWidth:2.5,order:2},
+    {type:'line',label:'New construction starts',data:[380,400,300,490,550,415,310,235,210,230],yAxisID:'y1',borderColor:'#8462F3',borderDash:[6,4],backgroundColor:'transparent',fill:false,tension:.35,pointRadius:5,pointBackgroundColor:'#F8F8F3',pointBorderColor:'#8462F3',pointBorderWidth:2,borderWidth:2,order:1},
+    {type:'line',label:'Asset value index',data:[95,100,102,112,127,115,103,105,110,118],yAxisID:'y2',borderColor:'#1D9E75',backgroundColor:'transparent',fill:false,tension:.35,pointStyle:'triangle',pointRadius:5,pointBackgroundColor:'#F8F8F3',pointBorderColor:'#1D9E75',pointBorderWidth:2,borderWidth:2.5,order:0}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#01041D',borderColor:'rgba(255,255,255,.1)',borderWidth:1,titleColor:'#fff',bodyColor:'rgba(255,255,255,.7)',padding:10,callbacks:{label:c=>c.datasetIndex===2?` Value index: ${c.raw}`:` ${c.dataset.label}: ${c.raw}K`}}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{color:'#727272',font:{size:11,family:'Manrope'},maxRotation:0}},
+      y1:{position:'left',min:150,max:700,grid:{color:'rgba(0,0,0,0.05)'},ticks:{color:'#727272',font:{size:11,family:'Manrope'},callback:v=>v+'K'}},
+      y2:{position:'right',min:78,max:140,grid:{drawOnChartArea:false},ticks:{color:'#1D9E75',font:{size:11,family:'Manrope'}}}
+    }
+  }
+});
+
+// Legend toggle logic
+document.querySelectorAll('.leg-toggle').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const idx=parseInt(btn.dataset.idx);
+    const meta=supplyChart.getDatasetMeta(idx);
+    const isHidden=meta.hidden;
+    meta.hidden=!isHidden;
+    // Require at least one visible
+    const anyVisible=supplyChart.data.datasets.some((_,i)=>!supplyChart.getDatasetMeta(i).hidden);
+    if(!anyVisible){meta.hidden=false;return;}
+    btn.classList.toggle('active',!meta.hidden);
+    btn.classList.toggle('inactive',!!meta.hidden);
+    supplyChart.update();
+  });
+});
+
+const team=[
+  {name:'Derrick Barker',title:'Co-Founder & CEO',creds:[{label:'Harvard',style:'navy'},{label:'Goldman Sachs',style:'ultra'},{label:'$450M deal volume',style:'gray'}],bio:'Derrick began investing in real estate as an undergraduate at Harvard College. After graduating, he spent three years trading complex securities at Goldman Sachs while simultaneously building a 500+ unit real estate portfolio in Atlanta. He grew his portfolio to approximately $150M at its peak and $450M in total transaction volume before co-founding Nectar.'},
+  {name:'Brittany Mosely',title:'Co-Founder & COO',creds:[{label:'Harvard',style:'navy'},{label:'A&F $120M division',style:'ultra'},{label:'120-unit portfolio',style:'gray'}],bio:'Brittany graduated from Harvard College with a degree in economics, then ran the $120M women\'s tops division at Abercrombie & Fitch overseeing all aspects of the business unit. After leaving corporate retail, she built a 120-unit short and medium-term rental portfolio before co-founding Nectar, where she oversees operations, finance, and organizational infrastructure.'},
+  {name:'Andy Roberts',title:'Head of Underwriting & Credit',creds:[{label:'Regions Bank $18B book',style:'navy'},{label:'Greystone',style:'ultra'},{label:'$3B+ executed',style:'gray'}],bio:'Andy is a CRE finance professional with a track record executing complex transactions exceeding $3 billion. He began his career as a CMBS underwriter at KeyBank, spent eleven years as a Senior Mortgage Banking Analyst, then served as Real Estate Credit Portfolio Manager at Regions Bank overseeing an $18B portfolio. Most recently, Senior Underwriter at Greystone focusing on small-balance multifamily bridge.'},
+  {name:'Walker Skaar',title:'Head of Capital Markets & Portfolio Management',creds:[{label:'150+ agent brokerage',style:'navy'},{label:'Series A fintech',style:'ultra'},{label:'Investor relations',style:'gray'}],bio:'Walker led business development for a venture-backed real estate brokerage, growing it from one office with a dozen agents to three offices and 150+ agents. Prior to Nectar he led partnerships and marketing for a Series A fintech startup. At Nectar, Walker oversees capital markets strategy, investor relations, portfolio management, and special servicing operations.'},
+  {name:'Nick Rebull',title:'VP of Originations',creds:[{label:'Bridge lender originator',style:'navy'},{label:'30+ markets',style:'ultra'},{label:'Active since 2016',style:'gray'}],bio:'Nick has been active in real estate since 2016, beginning his career as a Realtor in Miami. Immediately prior to Nectar he spent two years as an originator for a Florida-based bridge lender. At Nectar, Nick has built key borrower and broker relationships across 30+ markets, delivering consistent origination volume. Promoted to VP in 2024.'},
+  {name:'Morgan Lopes',title:'Head of Technology',creds:[{label:'Fast Company Top Innovator',style:'navy'},{label:'CTO · Global housing org',style:'ultra'},{label:'AI platform lead',style:'gray'}],bio:'Morgan spent over ten years in technology consulting helping founders build and scale businesses. He served as CTO for a global housing organization named to Fast Company\'s World\'s Most Innovative Companies list for four consecutive years. At Nectar, Morgan leads the AI platform, data systems, and investment management infrastructure.'},
+  {name:'Laquisha Milner',title:'Head of Operations & Product',creds:[{label:'Kabbage VP',style:'navy'},{label:'KServicing CEO',style:'ultra'},{label:'MBA · Georgia State',style:'gray'}],bio:'Laquisha spent nearly eight years at Kabbage, advancing to VP of Program Management. She subsequently served as CEO of KServicing, specializing in small business loan servicing and subservicing. She holds an MBA from Georgia State University\'s J. Mack Robinson College of Business and a BS in Management Information Systems from DeVry University.'},
+  {name:'Pierre Bradshaw',title:'Marketing',creds:[{label:'Realty Mogul $1.6B AUM',style:'navy'},{label:'Fintech growth',style:'ultra'},{label:'Billions raised',style:'gray'}],bio:'Pierre has built marketing engines that raised billions of dollars for fintech and real estate investment platforms. He founded LoanCentro.com in 2013, then joined Realty Mogul where he helped scale the platform to $1.6B AUM. He subsequently led the development of the largest non-listed real estate investment fund raised via crowdfunding technology.'},
+];
+
+const grid=document.getElementById('teamGrid');
+team.forEach((m,i)=>{
+  const wrap=document.createElement('div');
+  wrap.className='flip-wrap';
+  const credHTML=m.creds.map(c=>`<span class="cred-tag ${c.style}">${c.label}</span>`).join('');
+  wrap.innerHTML=`<div class="flip-inner"><div class="flip-front"><div><div class="team-name">${m.name}</div><div class="team-title">${m.title}</div><div class="team-creds">${credHTML}</div></div><div class="flip-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>tap to read bio</div></div><div class="flip-back"><div><div class="back-name">${m.name}</div><div class="back-title">${m.title}</div><div class="back-bio">${m.bio}</div></div><div class="flip-hint-back">tap to flip back</div></div></div>`;
+  wrap.addEventListener('click',()=>wrap.classList.toggle('flipped'));
+  grid.appendChild(wrap);
+});
+</script>
